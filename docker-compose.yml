@@ -6,6 +6,14 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - pgdata:/var/lib/postresql/data
-volumes:
-  pgdata: 
+      - /var/lib/postresql/data
+  mongodb:
+    image: mongo
+    command: mongod --port 64000
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=mongopw
+    ports:
+      - 64000:64000
+    volumes:
+      - /var/lib/mongodb/data
